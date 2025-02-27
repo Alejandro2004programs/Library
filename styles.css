@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.bookContainer {
+    min-height: 300px;
+    width: 1200px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 32px;
+    padding: 32px;
+}
+
+.book {
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    border: 2px solid black;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
