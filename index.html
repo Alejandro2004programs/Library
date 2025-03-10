@@ -10,7 +10,36 @@
   <body>
     <div class="container">
       <h1>Library</h1>
+      <button class="openButton">Add book</button>
       <div class="bookContainer"></div>
     </div>
+    <dialog>
+      <form method="dialog" class="form">
+        <div>
+          <label for="bookName">Name: </label>
+          <input type="text" id="bookName" name="bookName" required>
+        </div>
+        <div>
+          <label for="authorName">Author: </label>
+          <input type="text" id="authorName" name="authorName" required>
+        </div>
+        <div>
+          <label for="numberOfPages">Pages: </label>
+          <input type="number" id="numberOfPages" name="numberOfPages" required>
+        </div>
+        <div>
+          <label for="haveReadYet">Have Read Yet: </label>
+          <select name="haveReadYet" required>
+            <option value="default">Choose...</option>
+            <option value="Have Read Yet">Have Read Yet</option>
+            <option value="Have Read Yet">Have not read yet</option>
+          </select>
+        </div>
+        <div>
+          <button class="cancelButton">Cancel</button>
+          <button class="addButton">Add book to Library</button>
+        </div>
+      </form>
+    </dialog>
   </body>
 </html>
