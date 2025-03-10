@@ -49,8 +49,11 @@ body {
     font-size: 24px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     gap: 8px;
+    padding: 8px;
+    /* background-color: rgba(0, 128, 0, 0.785); */
+
 }
 
 .form {
@@ -71,3 +74,26 @@ body {
   opacity: 0.75;
 }
 
+.removeButton {
+    background-color: rgba(255, 0, 0, 0.753);
+}
+
+.toggleButton {
+    background-color: rgba(0, 0, 255, 0.551);
+}
+
+.openButton {
+    background-color:  rgba(0, 255, 0, 0.766);
+}
+
+.toggleButton:hover {
+    cursor: pointer;
+}
+
+.removeButton:hover {
+    cursor: pointer;
+}
+
+.openButton:hover {
+    cursor: pointer;
+}

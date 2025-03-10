@@ -21,6 +21,14 @@ function displayBooks() {
       current.textContent = book[element];
       currentBook.appendChild(current)
     }
+    let toggleButton = document.createElement("button");
+    toggleButton.textContent = "Change read status";
+    toggleButton.setAttribute("class", "toggleButton");
+    currentBook.appendChild(toggleButton);
+    let removeButton = document.createElement("button");
+    removeButton.textContent = "Remove";
+    removeButton.setAttribute("class", "removeButton");
+    currentBook.appendChild(removeButton);
     currentBook.setAttribute("class", "book");
     bookContainer.appendChild(currentBook);
   })
@@ -36,14 +44,33 @@ function displayMostRecentBook() {
     current.textContent = book[element];
     currentBook.appendChild(current);
   }
+  let toggleButton = document.createElement("button");
+  toggleButton.textContent = "Change read status";
+  toggleButton.setAttribute("class", "toggleButton");
+  currentBook.appendChild(toggleButton);
+  let removeButton = document.createElement("button");
+  removeButton.textContent = "Remove";
+  removeButton.setAttribute("class", "removeButton");
+  currentBook.appendChild(removeButton);
   currentBook.setAttribute("class", "book");
   bookContainer.appendChild(currentBook);
 }
 
-addBookToLibrary("How to Win Friends", "Dale Carnegie", 250, "Have Read");
-addBookToLibrary("Meditations", "Marcus Aurelius", 200, "Have Read");
+function updateRemoveButtons() {
+  const removeButtons = document.querySelectorAll(".removeButton");
+  removeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const bookContainer = document.querySelector(".bookContainer");
+      bookContainer.removeChild(button.parentNode);
+    });
+  });
+}
+
+addBookToLibrary("How to Win Friends", "Dale Carnegie", 250, "Have read");
+addBookToLibrary("Meditations", "Marcus Aurelius", 200, "Have read");
 
 displayBooks();
+updateRemoveButtons();
 
 const openButton = document.querySelector(".openButton");
 const cancelButton = document.querySelector(".cancelButton");
@@ -67,7 +94,9 @@ addButton.addEventListener("click", (event) => {
   const haveReadYet = form.haveReadYet.value;
   addBookToLibrary(bookName, authorName, numberOfPages, haveReadYet);
   displayMostRecentBook();
+  updateRemoveButtons();
   dialog.close();
+  removeButtons = document.querySelectorAll(".removeButton");
 });
 
 
