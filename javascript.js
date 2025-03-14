@@ -5,10 +5,25 @@ function Book(title, author, pages, haveRead) {
     this.author = author;
     this.pages = pages;
     this.haveRead = haveRead;
+    this.id = crypto.randomUUID();
+
+    Book.prototype.changeReadValue = function() {
+      if(this.haveRead == "Have read") {
+        this.haveRead = "Have not read";
+        console.log("A");
+      }
+      else {
+        this.haveRead = "Have read";
+        console.log("B");
+      }
+    }
 }
+
+
 
 function addBookToLibrary(title, author, pages, haveRead) {
   bookToAdd = new Book(title, author, pages, haveRead);
+
   myLibrary.push(bookToAdd);
 }
 
@@ -17,9 +32,11 @@ function displayBooks() {
   myLibrary.forEach((book) => {
     let currentBook = document.createElement("div");
     for(element in book) {
-      let current = document.createElement("p");
-      current.textContent = book[element];
-      currentBook.appendChild(current)
+      if(element != "id" && element != "changeReadValue") {
+        let current = document.createElement("p");
+        current.textContent = book[element];
+        currentBook.appendChild(current)
+      }
     }
     let toggleButton = document.createElement("button");
     toggleButton.textContent = "Change read status";
@@ -40,9 +57,11 @@ function displayMostRecentBook() {
   let currentBook = document.createElement("div");
   book = myLibrary.at(-1);
   for(element in book) {
-    let current = document.createElement("p");
-    current.textContent = book[element];
-    currentBook.appendChild(current);
+    if(element != "id" && element != "changeReadValue") {
+      let current = document.createElement("p");
+      current.textContent = book[element];
+      currentBook.appendChild(current)
+    }
   }
   let toggleButton = document.createElement("button");
   toggleButton.textContent = "Change read status";
@@ -56,21 +75,21 @@ function displayMostRecentBook() {
   bookContainer.appendChild(currentBook);
 }
 
-function updateRemoveButtons() {
-  const removeButtons = document.querySelectorAll(".removeButton");
-  removeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const bookContainer = document.querySelector(".bookContainer");
-      bookContainer.removeChild(button.parentNode);
-    });
-  });
-}
+// function updateRemoveButtons() {
+//   const removeButtons = document.querySelectorAll(".removeButton");
+//   removeButtons.forEach((button) => {
+//     button.addEventListener("click", () => {
+//       const bookContainer = document.querySelector(".bookContainer");
+//       bookContainer.removeChild(button.parentNode);
+//     });
+//   });
+// }
 
 addBookToLibrary("How to Win Friends", "Dale Carnegie", 250, "Have read");
 addBookToLibrary("Meditations", "Marcus Aurelius", 200, "Have read");
 
 displayBooks();
-updateRemoveButtons();
+// updateRemoveButtons();
 
 const openButton = document.querySelector(".openButton");
 const cancelButton = document.querySelector(".cancelButton");
@@ -94,10 +113,18 @@ addButton.addEventListener("click", (event) => {
   const haveReadYet = form.haveReadYet.value;
   addBookToLibrary(bookName, authorName, numberOfPages, haveReadYet);
   displayMostRecentBook();
-  updateRemoveButtons();
+  // updateRemoveButtons();
   dialog.close();
   removeButtons = document.querySelectorAll(".removeButton");
 });
 
+// toggleButtons = document.querySelectorAll(".toggleButton");
+// toggleButtons.forEach((toggleButton) => {
+//   toggleButton.addEventListener("click", () => {
+//     let currentBook = toggleButton.parentNode;
+//     console.log(currentBook);
+//     currentBook.changeReadValue();
+//   });
+// })
 
 
