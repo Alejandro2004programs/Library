@@ -20,8 +20,6 @@ function Book(title, author, pages, haveRead) {
     }
 }
 
-
-
 function addBookToLibrary(title, author, pages, haveRead) {
   bookToAdd = new Book(title, author, pages, haveRead);
   myLibrary.push(bookToAdd);
