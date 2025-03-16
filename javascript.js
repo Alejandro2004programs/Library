@@ -10,13 +10,10 @@ function Book(title, author, pages, haveRead) {
     Book.prototype.changeReadValue = function() {
       if(this.haveRead == "Have read") {
         this.haveRead = "Have not read";
-        console.log("A");
       }
       else {
         this.haveRead = "Have read";
-        console.log("B");
       }
-      console.log("X");
     }
 }
 
@@ -51,35 +48,28 @@ function displayMostRecentBook() {
 
 function updateRemoveButtons() {
   const removeButtons = document.querySelectorAll(".removeButton");
-  removeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const bookContainer = document.querySelector(".bookContainer");
-      bookContainer.removeChild(button.parentNode);
-    });
+  let button = removeButtons[removeButtons.length - 1];
+  button.addEventListener("click", () => {
+  const bookContainer = document.querySelector(".bookContainer");
+  bookContainer.removeChild(button.parentNode);
   });
 }
 
 function updateToggleButtons() {
   toggleButtons = document.querySelectorAll(".toggleButton");
-  toggleButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-    let currentBook = button.parentNode;
-    let bookId = currentBook.getAttribute('data-id');
-    for(let i = 0; i < myLibrary.length; i++) {
-      if(myLibrary[i].id == bookId) {
-        myLibrary[i].changeReadValue();
-        let children = currentBook.children;
-        children[3].textContent = myLibrary[i].haveRead;
-        console.log(myLibrary[i].haveRead);
-      }
+  let button = toggleButtons[toggleButtons.length - 1];
+  button.addEventListener("click", () => {
+  let currentBook = button.parentNode;
+  let bookId = currentBook.getAttribute('data-id');
+  for(let i = 0; i < myLibrary.length; i++) {
+    if(myLibrary[i].id == bookId) {
+      myLibrary[i].changeReadValue();
+      let children = currentBook.children;
+      children[3].textContent = myLibrary[i].haveRead;
     }
-    console.log("C");
-  });
+  }
 })
 }
-
-updateRemoveButtons();
-updateToggleButtons();
 
 const openButton = document.querySelector(".openButton");
 const cancelButton = document.querySelector(".cancelButton");
