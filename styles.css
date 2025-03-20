@@ -11,14 +11,15 @@ p {
 }
 
 body {
-    /* background-image: linear-gradient(
+  min-height: 100vh;
+  font-family: Verdana;
+  background-image: linear-gradient(
     45deg,
     magenta,
     rebeccapurple,
     dodgerblue,
     green
-  ); */
-  min-height: 100vh;
+  );  color: white;
 }
 
 .container {
@@ -32,7 +33,7 @@ body {
 .bookContainer {
     min-height: 300px;
     width: 1200px;
-    border: 1px solid black;
+    border: 1px solid white;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -45,15 +46,13 @@ body {
     width: 250px;
     height: 250px;
     text-align: center;
-    border: 2px solid black;
+    border: 2px solid white;
     font-size: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 8px;
     padding: 8px;
-    /* background-color: rgba(0, 128, 0, 0.785); */
-
 }
 
 .form {
@@ -84,16 +83,29 @@ body {
 
 .openButton {
     background-color:  rgba(0, 255, 0, 0.766);
+    font-size: 24px;
+    border-radius: 16px;
+    padding: 8px 16px;
 }
 
-.toggleButton:hover {
+.removeButton, .toggleButton {
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 16px;
+}
+
+.openButton {
+    color: white;
+    border: none;
+}
+
+
+.toggleButton:hover, .removeButton:hover, .openButton:hover {
     cursor: pointer;
 }
 
-.removeButton:hover {
-    cursor: pointer;
-}
-
-.openButton:hover {
-    cursor: pointer;
+.toggleButton:active, .removeButton:active, .openButton:active {
+    opacity: 0.8;
 }
