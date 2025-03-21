@@ -104,8 +104,9 @@ body {
 
 .toggleButton:hover, .removeButton:hover, .openButton:hover {
     cursor: pointer;
+    opacity: 0.8;
 }
 
 .toggleButton:active, .removeButton:active, .openButton:active {
-    opacity: 0.8;
+    opacity: 0.6;
 }
