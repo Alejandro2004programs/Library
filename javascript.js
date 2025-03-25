@@ -1,19 +1,21 @@
 const myLibrary = [];
 
-function Book(title, author, pages, haveRead) {
+class Book {
+  constructor(title, author, pages, haveRead) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.haveRead = haveRead;
     this.id = crypto.randomUUID();
+  }
+}
 
-    Book.prototype.changeReadValue = function() {
-      if(this.haveRead == "Have read") {
-        this.haveRead = "Have not read";
-      }
-      else {
-        this.haveRead = "Have read";
-      }
+Book.prototype.changeReadValue = function() {
+    if(this.haveRead == "Have read") {
+      this.haveRead = "Have not read";
+    }
+    else {
+      this.haveRead = "Have read";
     }
 }
 
